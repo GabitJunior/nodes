@@ -1,2 +1,4 @@
-# nodes
-Nodes script
+# GTM
+
+1. download script
+wget 
