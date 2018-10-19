@@ -2,9 +2,13 @@
 
 1. download script
 
-wget https://raw.githubusercontent.com/GabitJunior/nodes/master/setup_gtm.sh
+wget https://raw.githubusercontent.com/GabitJunior/nodes/master/gtm_install.sh
 
-2. run script
+2. grant to execute
 
-bash setup_gtm.sh
+chmod +x gtm_install.sh
+
+3. run script
+
+./gtm_install.sh
 
