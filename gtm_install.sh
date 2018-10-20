@@ -8,6 +8,7 @@ COIN_CLI='gentarium-cli'
 COIN_PATH='/usr/local/bin/'
 COIN_CL='https://github.com/GabitJunior/nodes/blob/master/gentarium-cli-linux-64'
 COIN_DM='https://github.com/GabitJunior/nodes/blob/master/gentariumd-linux-64'
+COIN_WAL=' https://github.com/genterium-project/gentarium/releases/download/v1.1.0/ge-linux64.tar.gz'
 SENTINEL_REPO='https://github.com/genterium-project/sentinel'
 COIN_NAME='GTM'
 COIN_PORT=17017
@@ -57,10 +58,15 @@ function install_sentinel() {
 function download_node() {
   echo -e "${GREEN}Downloading and Installing VPS $COIN_NAME Daemon${NC}"
   cd $TMP_FOLDER >/dev/null 2>&1
-  wget -q $COIN_CL
-  mv $(basename $COIN_CL) $COIN_CLI
-  wget -q $COIN_DM
-  mv $(basename $COIN_DM) $COIN_DAEMON
+  #wget -q $COIN_CL
+  wget -q $COIN_WAL
+  tar -xzvf ge-linux64.tar.gz
+  mv ge/bin/* .
+  
+  #mv $(basename $COIN_CL) $COIN_CLI
+  #wget -q $COIN_DM
+  #mv $(basename $COIN_DM) $COIN_DAEMON
+  
   compile_error
   chmod +x $COIN_DAEMON $COIN_CLI
   cp $COIN_DAEMON $COIN_CLI $COIN_PATH
