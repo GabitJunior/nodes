@@ -2,7 +2,8 @@
 
 TMP_FOLDER=$(mktemp -d)
 CONFIG_FILE='gentarium.conf'
-CONFIGFOLDER='/root/.gentariumcore'
+# old CONFIGFOLDER='/root/.gentariumcore'
+CONFIGFOLDER='/root/.gentarium'
 COIN_DAEMON='gentariumd'
 COIN_CLI='gentarium-cli'
 COIN_PATH='/usr/local/bin/'
@@ -11,7 +12,7 @@ COIN_WAL='https://github.com/genterium-project/gentarium-2.0/releases/download/v
 
 SENTINEL_REPO='https://github.com/genterium-project/sentinel'
 COIN_NAME='GTM'
-COIN_PORT=27717
+COIN_PORT=27117
 RPC_PORT=9998
 
 NODEIP=$(curl -s4 icanhazip.com)
@@ -158,6 +159,10 @@ externalip=$NODEIP:$COIN_PORT
 masternodeprivkey=$COINKEY
 
 
+zeromintpercentage=0
+enablezeromint=0
+staking=0
+
 #Addnodes
 addnode=46.4.182.111:27117
 
@@ -175,15 +180,6 @@ addnode=188.40.194.214:27117
 EOF
 }
 
-
-function enable_firewall() {
-  echo -e "Installing and setting up firewall to allow ingress on port ${GREEN}$COIN_PORT${NC}"
-  ufw allow $COIN_PORT/tcp comment "$COIN_NAME MN port" >/dev/null
-  ufw allow ssh comment "SSH" >/dev/null 2>&1
-  ufw limit ssh/tcp >/dev/null 2>&1
-  ufw default allow outgoing >/dev/null 2>&1
-  echo "y" | ufw enable >/dev/null 2>&1
-}
 
 
 function get_ip() {
@@ -294,7 +290,6 @@ function setup_node() {
   create_key
   update_config
   install_sentinel
-  enable_firewall
   important_information
   configure_systemd
 }
