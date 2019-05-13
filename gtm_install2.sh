@@ -9,7 +9,8 @@ COIN_CLI='gentarium-cli'
 COIN_PATH='/usr/local/bin/'
 # old COIN_WAL=' https://github.com/genterium-project/gentarium/releases/download/v1.2.0/ge-linux64.tar.gz'
 # COIN_WAL='https://github.com/genterium-project/gentarium-2.0/releases/download/v2.2.0/gentarium-2.2-linux-x64.zip'
-COIN_WAL='https://github.com/genterium-project/gentarium-2.0/releases/download/v2.3.0/gentarium-2.3-linux-x64.zip'
+WAL_VER="gentarium-2.3-linux-x64.zip"
+COIN_WAL="https://github.com/genterium-project/gentarium-2.0/releases/download/v2.3.0/$WAL_VER"
 
 SENTINEL_REPO='https://github.com/genterium-project/sentinel'
 COIN_NAME='GTM'
@@ -62,7 +63,7 @@ function download_node() {
   wget -q $COIN_WAL
   # old tar -xzvf ge-linux64.tar.gz
   # old mkdir ge
-  unzip gentarium-2.2-linux-x64.zip 
+  unzip $WAL_VER 
   # old -d ge/
   # old mv ge/ .
     
